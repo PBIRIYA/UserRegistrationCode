@@ -24,24 +24,37 @@ namespace UserRegistrationTests
             var result = user.ValidateLastName(lastName); ;
             Assert.IsTrue(result);
         }
-       
-            [TestMethod]
-            [DataRow("jrm@gmail.com")]
-            [DataRow("jrm.cg@gmail.co.in")]
-            [DataRow("jrm@gmail.co.in")]
-            [DataRow("jrm100@gmail.com")]
-            [DataRow("jrm-nit@1mg.co.in")]
-            public void TestEmailValidation_ValidEmails(string email)
-            {
-                //Arrange
-                User user = new User();
-                bool expected = true;
 
-                //Act
-                bool actual = user.ValidateEmail(email);
+        [TestMethod]
+        [DataRow("jrm@gmail.com")]
+        [DataRow("jrm.cg@gmail.co.in")]
+        [DataRow("jrm@gmail.co.in")]
+        [DataRow("jrm100@gmail.com")]
+        [DataRow("jrm-nit@1mg.co.in")]
+        public void TestEmailValidation_ValidEmails(string email)
+        {
+            //Arrange
+            User user = new User();
+            bool expected = true;
 
-                //Assert
-                Assert.AreEqual(expected, actual);
-            }
+            //Act
+            bool actual = user.ValidateEmail(email);
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [DataRow("91 6231230127")]
+        public void TestPhNumberValidation_ValidNumbers(string phNum)
+        {
+            //Arrange
+            User user = new User();
+            bool expected = true;
+            //Act
+            bool actual = user.ValidateMobileNumber(phNum);
+            //Assert
+            Assert.AreEqual(expected, actual);
         }
     }
+}
