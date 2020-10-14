@@ -56,5 +56,19 @@ namespace UserRegistrationTests
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        [DataRow("Had2Te#t")]
+        [DataRow("had2T3stP@ss")]
+        [DataRow("T3STP@SS")]
+        public void Test_ValidPasswords(string pass)
+        {
+            //Arrange
+            User user = new User();
+            bool expected = true;
+            //Act
+            bool actual = user.ValidatePassword(pass);
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
