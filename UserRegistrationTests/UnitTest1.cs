@@ -15,5 +15,13 @@ namespace UserRegistrationTests
             var result = user.ValidateFirstName(firstName); ;
             Assert.IsTrue(result);
         }
+       [TestMethod]
+            public void VerifyLastName_StartsWith_CapitalOrNot()
+            {
+                User user = new User();
+                var lastName = "Biriya";
+                var result = user.ValidateLastName(lastName); ;
+                Assert.IsTrue(result);
+            }
+        }
     }
-}

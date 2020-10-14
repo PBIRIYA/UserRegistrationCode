@@ -17,5 +17,15 @@ namespace UserRegistrationCode
                 Console.WriteLine("Invalid first name. " +
                     "It should have minimum 3 letters and only first letter as capital");
         }
+        public static void AskLastName(User user)
+        {
+            Console.Write("Enter Last Name :");
+            var lastName = Console.ReadLine();
+            if (user.ValidateLastName(lastName))
+                user.lastName = lastName;
+            else
+                Console.WriteLine("Invalid Last name. " +
+                    "It should have minimum 3 letters and only first letter as capital");
+        }
     }
 }
