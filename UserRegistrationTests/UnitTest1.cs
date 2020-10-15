@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 using UserRegistrationCode;
 namespace UserRegistrationTests
@@ -80,11 +81,20 @@ namespace UserRegistrationTests
         {
             //Arrange
             User user = new User();
-            bool expected = true;
+            string expected = "Password needs to have min 8 characters, at least 1 upper case character, at least 1 numeric value, exactly 1 special character";
+            string actual;
             //Act
-            bool actual = user.ValidatePassword(pass);
+            try
+            {
+                actual = user.ValidatePassword(pass).ToString();
+            }
+            catch (ValidationException e)
+            {
+                actual = e.Message;
+            }
+
             //Assert
-            Assert.AreNotEqual(expected, actual);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
