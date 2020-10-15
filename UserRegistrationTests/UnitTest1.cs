@@ -76,7 +76,6 @@ namespace UserRegistrationTests
         [DataRow("TestP@ss")] //no number
         [DataRow("t3stp@ss")] //no upper case
         [DataRow("T#stP@ss5")] //more than 1 special case
-        
         public void ValidatePAssword_IfInvalidPassword_ReturnsFalse(string password)
         {
             //Arrange
