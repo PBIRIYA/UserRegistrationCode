@@ -18,7 +18,11 @@ namespace UserRegistrationCode
         public string password { get; set; }
         private string _regexPassword = "^(?=.*[A-Z])[\\S]{8,}$";
         string _regex = "";
-
+        private bool Validate(string str, string regex)
+        {
+            Regex rgxObj = new Regex(_regex);
+            return rgxObj.IsMatch(str);
+        }
         public bool ValidateFirstName(string firstName)
         {
             return Regex.IsMatch(firstName, _regexFirstName);
@@ -66,11 +70,9 @@ namespace UserRegistrationCode
             emailList.Add("abc@gmail.com.aa.au");
 
             _regex = "^[a-z0-9-+]+([.][a-z0-9+-]+)?@[a-z0-9]+[.][a-z]{2,}([.][a-z]{2,})?$";
-            Regex rgxObj = new Regex(_regex);
-
             foreach (string email in emailList)
             {
-                if (rgxObj.IsMatch(email))
+                if (Validate(email, _regex))
                     Console.WriteLine(email + "- VALID");
                 else
                     Console.WriteLine(email + "- INVALID");

@@ -71,10 +71,14 @@ namespace UserRegistrationTests
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void Test_InvalidPassword()
+        [DataRow("Hd2T#t")] //less than 8 char
+        [DataRow("had2testPass")] //no special char
+        [DataRow("TestP@ss")] //no number
+        [DataRow("t3stp@ss")] //no upper case
+        [DataRow("T#stP@ss5")] //more than 1 special case
+        public void TestPasswordValidation_InvalidPasswords(string pass)
         {
             //Arrange
-            string pass = "Hd2T#t";
             User user = new User();
             bool expected = true;
             //Act
