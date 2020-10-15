@@ -84,7 +84,6 @@ namespace UserRegistrationTests
             bool expected = true;
             //Act
             bool actual = user.ValidatePassword(password);
-
             //Assert
             Assert.AreEqual(expected, actual);
         }
