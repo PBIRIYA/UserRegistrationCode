@@ -57,5 +57,19 @@ namespace UserRegistrationCode
                 Console.WriteLine("Invalid Password. " +
                     "It should have Minimum 8 characters, atleast 1 Upper Case, atleast 1 number and exactly 1 special character");
         }
+        public static void CheckEmails(string allEmails)
+        {
+            var user = new User();
+            string[] emails = allEmails.Split(' ');
+            foreach (var email in emails)
+            {
+                Console.Write(email + " : ");
+                if (user.ValidateEmail(email))
+                    Console.Write("Valid");
+                else
+                    Console.Write("Invalid");
+                Console.WriteLine();
+            }
+        }
     }
 }
